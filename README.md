@@ -3,7 +3,9 @@ This project is a personal portfolio site built using semantic HTML5 and custom 
 
 # Software Used For Porfolio
 HTML5
+
 CSS
+
 GitHub Pages
 
 # Live Website
