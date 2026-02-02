@@ -1,0 +1,283 @@
+<!--
+Name: Cole Jason Fetterman
+Student ID: 9 9246 2023
+Course: IST 256 – Programming for the Web
+Assignment: LIVE Portfolio Page Assignment
+Submission Date: February 1, 2026
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Cole Jason Fetterman | Student Portfolio</title>
+
+  <meta name="description" content="Portfolio of Cole Jason Fetterman, a Cybersecurity student with a minor in Criminal Justice." />
+  <meta name="author" content="Cole Jason Fetterman" />
+  <meta name="keywords" content="Cybersecurity, Criminal Justice, Portfolio, Student, Web" />
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="styles/main.css" />
+
+  <!-- Small internal override (allowed & intentional) -->
+  <style>
+    .site-header .site-title { letter-spacing: 0.5px; }
+    header mark { background: rgba(255,255,255,0.18); color: #fff; }
+  </style>
+</head>
+
+<body>
+  <!-- Skip link -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="site">
+
+    <!-- HEADER -->
+    <header id="top" class="site-header">
+      <div class="header-inner">
+
+        <div class="header-text">
+          <h1 class="site-title">Cole Jason Fetterman</h1>
+
+          <p class="site-lead">
+            Student following a <strong>Major in Cybersecurity</strong> and a
+            <strong>Minor in Criminal Justice</strong>, with the goal of
+            pursuing a career in the <mark>law enforcement field</mark>.
+          </p>
+        </div>
+
+        <div class="header-media">
+          <img
+            class="profile-photo"
+            src="images/psu.jpg"
+            alt="Photo of Cole Fetterman standing next to the Penn State LHV Statue"
+            width="300"
+            height="300"
+            loading="lazy"
+          />
+        </div>
+
+      </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="site-nav" aria-label="Primary">
+      <ul class="nav-list">
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+        <li><a class="nav-link" href="#extras">Extras</a></li>
+      </ul>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main" class="site-main">
+
+      <!-- ABOUT -->
+      <section id="about" class="panel">
+        <h2 class="panel-title">About Me</h2>
+
+        <p>
+          Hello, my name is Cole Fetterman. I’m currently a student at
+          Penn State Lehigh Valley majoring in Cybersecurity and minoring
+          in Criminal Justice. I’ve always had an interest in computers,
+          technology, and the security and protection that surrounds them.
+        </p>
+
+        <p>
+          Through my minor, I’ve developed a strong interest in law
+          enforcement and case law within U.S. society. This course has
+          helped me learn how to build and structure websites using HTML
+          and Visual Studio Code.
+        </p>
+
+        <dl class="facts">
+          <dt>Major interest</dt>
+          <dd>Cybersecurity</dd>
+
+          <dt>Minor interest</dt>
+          <dd>Criminal Justice</dd>
+
+          <dt>Location</dt>
+          <dd>Pennsylvania, United States</dd>
+
+          <dt>Current focus</dt>
+          <dd>Developing skills in my major and related coursework</dd>
+        </dl>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="panel">
+        <h2 class="panel-title">Skills</h2>
+
+        <ul class="pill-list">
+          <li class="pill">Cybersecurity fundamentals – Intermediate</li>
+          <li class="pill">HTML structure & web coding – Beginner</li>
+          <li class="pill">Radio programming (Motorola / XTS5000) – Advanced</li>
+          <li class="pill">PC building & hardware troubleshooting – Advanced</li>
+          <li class="pill">Problem solving – Intermediate</li>
+        </ul>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <caption>Technical Skills Overview</caption>
+            <thead>
+              <tr>
+                <th scope="col">Skill</th>
+                <th scope="col">Level</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Cybersecurity</th>
+                <td>Intermediate</td>
+              </tr>
+              <tr>
+                <th scope="row">HTML & Web Coding</th>
+                <td>Beginner</td>
+              </tr>
+              <tr>
+                <th scope="row">Radio Programming</th>
+                <td>Advanced</td>
+              </tr>
+              <tr>
+                <th scope="row">PC Hardware</th>
+                <td>Advanced</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="panel">
+        <h2 class="panel-title">Projects</h2>
+
+        <figure class="media-card">
+          <img
+            class="media-img"
+            src="images/Family.jpg"
+            alt="My Dad and I in Hawaii"
+            width="600"
+            height="420"
+            loading="lazy"
+          />
+          <figcaption class="media-caption">
+            My Dad and I in Hawaii
+          </figcaption>
+        </figure>
+
+        <div class="cards">
+          <article class="card">
+            <h3>Custom PC Build</h3>
+            <p>
+              I built my own computer from scratch, selecting all components
+              myself. With guidance from my dad, I learned about hardware
+              assembly, troubleshooting, and system optimization.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>XTS5000 Radio Repair and Resell</h3>
+            <p>
+              I repaired several non-functional XTS5000 radios by sourcing
+              replacement parts and restoring them to working condition.
+              These were later resold, giving me hands-on experience with
+              electronics repair.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="panel">
+        <h2 class="panel-title">Contact</h2>
+
+        <p class="contact-line">
+          Email:
+          <a href="mailto:cjf6238@psu.edu">cjf6238@psu.edu</a>
+          <span class="sep">|</span>
+          Phone:
+          <a href="tel:6109096333">610-909-6333</a>
+        </p>
+
+        <p>
+          <a class="btn btn-ghost" href="Resume.pdf" download>
+            Download Resume (PDF)
+          </a>
+        </p>
+
+        <form class="contact-form" action="#" method="post">
+          <fieldset class="form-fieldset">
+            <legend class="form-legend">Send a message</legend>
+
+            <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" name="name" required />
+
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+
+            <label class="form-label" for="topic">Topic</label>
+            <select id="topic" name="topic" required>
+              <option value="">Choose one</option>
+              <option value="school">School</option>
+              <option value="project">Project</option>
+              <option value="other">Other</option>
+            </select>
+
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <div class="form-actions">
+              <button class="btn" type="submit">Send</button>
+              <button class="btn btn-ghost" type="reset">Clear</button>
+            </div>
+          </fieldset>
+        </form>
+      </section>
+
+      <!-- EXTRAS -->
+      <section id="extras" class="panel">
+        <h2 class="panel-title">Extras</h2>
+        <ul class="link-list">
+          <li>
+            <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer">
+              W3C Validator
+            </a>
+          </li>
+          <li>
+            <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer">
+              Web Accessibility Initiative
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- ASIDE -->
+    <aside class="site-aside">
+      <h2 class="panel-title">Quick Facts</h2>
+      <ul class="aside-list">
+        <li>Goal: Succeed in both my major and minor</li>
+        <li>Interests: Law Enforcement, Web Coding, Trucks</li>
+        <li>Life Fact: I value steady effort and continuous improvement</li>
+      </ul>
+    </aside>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <p>&copy; 2026 Cole Jason Fetterman</p>
+      <p>
+        Last updated:
+        <time datetime="2026-02-01">February 1, 2026</time>
+        <span class="sep">|</span>
+        <a href="#top">Back to top</a>
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>
