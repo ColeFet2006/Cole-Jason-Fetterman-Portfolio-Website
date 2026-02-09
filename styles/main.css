@@ -4,8 +4,8 @@ Grey + Creative — FULL STYLESHEET (Proper sized font)
 Name: Cole Jason Fetterman
 Student ID: 9 9246 2023
 Course: IST 256: Programming for the Web
-Assignment: LIVE Portfolio Page Assignment
-Submission Date: February 1, 2026
+Assignment: ASG-L3: LIVE Portfolio Page + DOM Activities
+Submission Date: February 8, 2026
 
 - Angled hero header + headline
 - Left rail navigation on desktop (sticky)
@@ -404,14 +404,6 @@ a[target="_blank"]::after{
   border: 1px solid rgba(255,255,255,0.12);
 }
 
-/* Details */
-.details summary{ cursor:pointer; font-weight: var(--fw-medium); }
-.details[open] summary{
-  text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.72);
-  text-underline-offset: 7px;
-}
-
 /* Media card */
 .media-card{
   margin: 0 0 var(--sp-4);
@@ -447,18 +439,6 @@ a[target="_blank"]::after{
   box-shadow: var(--shadow-2);
   border-color: rgba(255,255,255,0.20);
 }
-
-.quote{
-  margin: var(--sp-4) 0 0;
-  padding: var(--sp-4);
-  border-left: 3px solid rgba(255,255,255,0.25);
-  background: rgba(255,255,255,0.03);
-  border-radius: var(--r-sm);
-}
-.quote p{ margin:0; color: var(--muted); }
-
-.resource-line{ margin-bottom: 0; }
-.external-link{ font-weight: var(--fw-medium); }
 
 /* Buttons (flat + minimal) */
 .btn{
@@ -600,17 +580,11 @@ textarea:focus{
   color: var(--muted);
 }
 
-.footer-meta{
-  margin-top: var(--sp-2);
-  color: rgba(245, 246, 247, 0.7);
-}
-
 .contact-line{ color: var(--muted); }
 
 /* =========================================================
    11) Utilities
    ========================================================= */
-.small{ font-size: var(--fs-sm); opacity: 0.98; color: var(--muted); }
 .sep{ margin: 0 var(--sp-2); color: rgba(255,255,255,0.55); }
 
 /* =========================================================
@@ -714,3 +688,60 @@ textarea:focus{
     scroll-behavior: auto !important;
   }
 }
+
+/* =========================================================
+   ASG-L3 DOM Additions (does NOT break your original design)
+   ========================================================= */
+
+/* Make the section title feel clickable (we won't require adding buttons in HTML) */
+.panel-title{
+  cursor: pointer;
+}
+
+/* Collapsed state (JS toggles this class on the section) */
+.panel.is-collapsed > :not(.panel-title){
+  display: none;
+}
+
+/* Small caret indicator added via CSS on the title */
+.panel-title::before{
+  content: "▾ ";
+  opacity: 0.85;
+}
+.panel.is-collapsed .panel-title::before{
+  content: "▸ ";
+}
+
+/* Active nav link state */
+.nav-link.is-active{
+  opacity: 1;
+  text-decoration-color: rgba(255,255,255,0.85);
+}
+
+/* Form status message (JS creates it if not in HTML) */
+.form-status{
+  margin-top: var(--sp-3);
+  color: var(--muted);
+}
+
+/* Back-to-top button (JS creates it if not in HTML) */
+.back-to-top{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 60;
+
+  display: none; /* shown by JS */
+  padding: 0.65rem 0.95rem;
+  border-radius: var(--r-round);
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(0,0,0,0.55);
+  color: var(--text);
+  cursor: pointer;
+
+  box-shadow: var(--shadow-1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.back-to-top:hover{ transform: translateY(-1px); }
+.back-to-top:active{ transform: translateY(1px); }
