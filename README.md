@@ -4,6 +4,34 @@ This project is a personal portfolio site built using semantic HTML5 and custom 
 # Software Used For Porfolio
 HTML5
 
+# Update's for the Website
+## 📝 Update Log
+
+### February 8, 2026 — DOM Interactivity & UX Enhancements (ASG-L3)
+- Added JavaScript-powered DOM interactivity to the portfolio
+- Sections (About, Skills, Projects, Contact, Extras) can now be collapsed and expanded by clicking their headings
+- Implemented smooth scrolling navigation between sections
+- Added active navigation highlighting based on scroll position
+- Contact form now provides on-page feedback without refreshing
+- Added a dynamic “Back to Top” button that appears while scrolling
+- Improved accessibility with keyboard interaction support for interactive elements
+
+### February 7, 2026 — Structural & Styling Improvements
+- Refactored HTML structure for improved semantic clarity
+- Reorganized project folders for cleaner structure (styles, scripts, images)
+- Updated CSS for improved layout consistency and spacing
+- Improved responsiveness across different screen sizes
+- Prepared the site structure for upcoming DOM-based features
+
+### February 1, 2026 — Initial Live Portfolio Release
+- Launched the initial live portfolio using GitHub Pages
+- Implemented semantic HTML structure
+- Added responsive CSS layout and styling
+- Included About, Skills, Projects, Contact, and Extras sections
+- Ensured accessibility features such as alt text, labels, and skip navigation
+
+
+
 CSS
 
 GitHub Pages
