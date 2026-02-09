@@ -2,8 +2,9 @@
 Name: Cole Jason Fetterman
 Student ID: 9 9246 2023
 Course: IST 256 – Programming for the Web
-Assignment: LIVE Portfolio Page Assignment
-Submission Date: February 1, 2026
+Assignment: ASG-L3: LIVE Portfolio Page + DOM Activities
+Submission Date: February 8, 2026
+Repository URL: (paste your GitHub repo URL here)
 -->
 
 <!DOCTYPE html>
@@ -21,7 +22,10 @@ Submission Date: February 1, 2026
   <!-- External CSS -->
   <link rel="stylesheet" href="styles/main.css" />
 
-  <!-- Small internal override (allowed & intentional) -->
+  <!-- External JS (DOM Activities) -->
+  <script src="scripts/main.js" defer></script>
+
+  <!-- Small internal override (kept from your original file) -->
   <style>
     .site-header .site-title { letter-spacing: 0.5px; }
     header mark { background: rgba(255,255,255,0.18); color: #fff; }
@@ -237,6 +241,9 @@ Submission Date: February 1, 2026
             </div>
           </fieldset>
         </form>
+
+        <!-- JS will write status text here -->
+        <p id="form-status" class="form-status" aria-live="polite"></p>
       </section>
 
       <!-- EXTRAS -->
@@ -272,7 +279,7 @@ Submission Date: February 1, 2026
       <p>&copy; 2026 Cole Jason Fetterman</p>
       <p>
         Last updated:
-        <time datetime="2026-02-01">February 1, 2026</time>
+        <time datetime="2026-02-08">February 8, 2026</time>
         <span class="sep">|</span>
         <a href="#top">Back to top</a>
       </p>
