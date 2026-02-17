@@ -2,9 +2,10 @@
 Name: Cole Jason Fetterman
 Student ID: 9 9246 2023
 Course: IST 256 – Programming for the Web
-Assignment: ASG-L3: LIVE Portfolio Page + DOM Activities
-Submission Date: February 8, 2026
+Assignment: LIVE Portfolio Page + Bootstrap Activities
+Submission Date: February 17, 2026
 Repository URL: (paste your GitHub repo URL here)
+GitHub Pages URL: (paste your github.io live URL here)
 -->
 
 <!DOCTYPE html>
@@ -19,13 +20,18 @@ Repository URL: (paste your GitHub repo URL here)
   <meta name="author" content="Cole Jason Fetterman" />
   <meta name="keywords" content="Cybersecurity, Criminal Justice, Portfolio, Student, Web" />
 
-  <!-- External CSS -->
+  <!-- Bootstrap 5 CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Your External CSS -->
   <link rel="stylesheet" href="styles/main.css" />
 
-  <!-- External JS (DOM Activities) -->
+  <!-- Your External JS -->
   <script src="scripts/main.js" defer></script>
 
-  <!-- Small internal override (kept from your original file) -->
   <style>
     .site-header .site-title { letter-spacing: 0.5px; }
     header mark { background: rgba(255,255,255,0.18); color: #fff; }
@@ -33,7 +39,6 @@ Repository URL: (paste your GitHub repo URL here)
 </head>
 
 <body>
-  <!-- Skip link -->
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <div class="site">
@@ -66,93 +71,173 @@ Repository URL: (paste your GitHub repo URL here)
       </div>
     </header>
 
-    <!-- NAVIGATION -->
-    <nav class="site-nav" aria-label="Primary">
-      <ul class="nav-list">
-        <li><a class="nav-link" href="#about">About</a></li>
-        <li><a class="nav-link" href="#skills">Skills</a></li>
-        <li><a class="nav-link" href="#projects">Projects</a></li>
-        <li><a class="nav-link" href="#contact">Contact</a></li>
-        <li><a class="nav-link" href="#extras">Extras</a></li>
-      </ul>
+    <!-- VERTICAL NAVIGATION (STACKED DOWNWARD) -->
+    <nav class="navbar navbar-dark site-nav" aria-label="Primary">
+      <div class="container-fluid px-0 d-block">
+
+        <a class="navbar-brand fw-bold mb-3" href="#top">Cole Fetterman</a>
+
+        <!-- Collapsible on small screens only -->
+        <button class="navbar-toggler mb-3 d-lg-none"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#primaryNav"
+          aria-controls="primaryNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Keep open on desktop, collapsible on mobile -->
+        <div class="collapse navbar-collapse show d-lg-block" id="primaryNav">
+          <ul class="navbar-nav flex-column gap-2">
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="#extras">Extras</a></li>
+          </ul>
+        </div>
+
+      </div>
     </nav>
 
     <!-- MAIN -->
     <main id="main" class="site-main">
 
-      <!-- ABOUT -->
+      <!-- ABOUT (Bootstrap activity: accordion) -->
       <section id="about" class="panel">
         <h2 class="panel-title">About Me</h2>
 
-        <p>
-          Hello, my name is Cole Fetterman. I’m currently a student at
-          Penn State Lehigh Valley majoring in Cybersecurity and minoring
-          in Criminal Justice. I’ve always had an interest in computers,
-          technology, and the security and protection that surrounds them.
-        </p>
+        <div class="accordion accordion-flush" id="aboutAccordion">
+          <div class="accordion-item bg-transparent border-0">
+            <h3 class="accordion-header" id="aboutHead1">
+              <button class="accordion-button collapsed bg-transparent text-light px-0"
+                type="button" data-bs-toggle="collapse" data-bs-target="#aboutBody1"
+                aria-expanded="false" aria-controls="aboutBody1">
+                Background
+              </button>
+            </h3>
 
-        <p>
-          Through my minor, I’ve developed a strong interest in law
-          enforcement and case law within U.S. society. This course has
-          helped me learn how to build and structure websites using HTML
-          and Visual Studio Code.
-        </p>
+            <div id="aboutBody1" class="accordion-collapse collapse" aria-labelledby="aboutHead1" data-bs-parent="#aboutAccordion">
+              <div class="accordion-body px-0">
+                <p>
+                  Hello, my name is Cole Fetterman. I’m currently a student at
+                  Penn State Lehigh Valley majoring in Cybersecurity and minoring
+                  in Criminal Justice. I’ve always had an interest in computers,
+                  technology, and the security and protection that surrounds them.
+                </p>
 
-        <dl class="facts">
-          <dt>Major interest</dt>
-          <dd>Cybersecurity</dd>
+                <p>
+                  Through my minor, I’ve developed a strong interest in law
+                  enforcement and case law within U.S. society. This course has
+                  helped me learn how to build and structure websites using HTML
+                  and Visual Studio Code.
+                </p>
+              </div>
+            </div>
+          </div>
 
-          <dt>Minor interest</dt>
-          <dd>Criminal Justice</dd>
+          <div class="accordion-item bg-transparent border-0">
+            <h3 class="accordion-header" id="aboutHead2">
+              <button class="accordion-button collapsed bg-transparent text-light px-0"
+                type="button" data-bs-toggle="collapse" data-bs-target="#aboutBody2"
+                aria-expanded="false" aria-controls="aboutBody2">
+                Quick Facts
+              </button>
+            </h3>
 
-          <dt>Location</dt>
-          <dd>Pennsylvania, United States</dd>
+            <div id="aboutBody2" class="accordion-collapse collapse" aria-labelledby="aboutHead2" data-bs-parent="#aboutAccordion">
+              <div class="accordion-body px-0">
+                <dl class="facts">
+                  <dt>Major interest</dt>
+                  <dd>Cybersecurity</dd>
 
-          <dt>Current focus</dt>
-          <dd>Developing skills in my major and related coursework</dd>
-        </dl>
+                  <dt>Minor interest</dt>
+                  <dd>Criminal Justice</dd>
+
+                  <dt>Location</dt>
+                  <dd>Pennsylvania, United States</dd>
+
+                  <dt>Current focus</dt>
+                  <dd>Developing skills in my major and related coursework</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      <!-- SKILLS -->
+      <!-- SKILLS (Bootstrap activity: accordion) -->
       <section id="skills" class="panel">
         <h2 class="panel-title">Skills</h2>
 
-        <ul class="pill-list">
-          <li class="pill">Cybersecurity fundamentals – Intermediate</li>
-          <li class="pill">HTML structure & web coding – Beginner</li>
-          <li class="pill">Radio programming (Motorola / XTS5000) – Advanced</li>
-          <li class="pill">PC building & hardware troubleshooting – Advanced</li>
-          <li class="pill">Problem solving – Intermediate</li>
-        </ul>
+        <div class="accordion accordion-flush" id="skillsAccordion">
+          <div class="accordion-item bg-transparent border-0">
+            <h3 class="accordion-header" id="skillsHead1">
+              <button class="accordion-button bg-transparent text-light px-0"
+                type="button" data-bs-toggle="collapse" data-bs-target="#skillsBody1"
+                aria-expanded="true" aria-controls="skillsBody1">
+                Skills list
+              </button>
+            </h3>
 
-        <div class="table-wrap">
-          <table class="data-table">
-            <caption>Technical Skills Overview</caption>
-            <thead>
-              <tr>
-                <th scope="col">Skill</th>
-                <th scope="col">Level</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Cybersecurity</th>
-                <td>Intermediate</td>
-              </tr>
-              <tr>
-                <th scope="row">HTML & Web Coding</th>
-                <td>Beginner</td>
-              </tr>
-              <tr>
-                <th scope="row">Radio Programming</th>
-                <td>Advanced</td>
-              </tr>
-              <tr>
-                <th scope="row">PC Hardware</th>
-                <td>Advanced</td>
-              </tr>
-            </tbody>
-          </table>
+            <div id="skillsBody1" class="accordion-collapse collapse show" aria-labelledby="skillsHead1" data-bs-parent="#skillsAccordion">
+              <div class="accordion-body px-0">
+                <ul class="pill-list">
+                  <li class="pill">Cybersecurity fundamentals – Intermediate</li>
+                  <li class="pill">HTML structure &amp; web coding – Beginner</li>
+                  <li class="pill">Radio programming (Motorola / XTS5000) – Advanced</li>
+                  <li class="pill">PC building &amp; hardware troubleshooting – Advanced</li>
+                  <li class="pill">Problem solving – Intermediate</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item bg-transparent border-0">
+            <h3 class="accordion-header" id="skillsHead2">
+              <button class="accordion-button collapsed bg-transparent text-light px-0"
+                type="button" data-bs-toggle="collapse" data-bs-target="#skillsBody2"
+                aria-expanded="false" aria-controls="skillsBody2">
+                Skills table
+              </button>
+            </h3>
+
+            <div id="skillsBody2" class="accordion-collapse collapse" aria-labelledby="skillsHead2" data-bs-parent="#skillsAccordion">
+              <div class="accordion-body px-0">
+                <div class="table-wrap">
+                  <table class="data-table">
+                    <caption>Technical Skills Overview</caption>
+                    <thead>
+                      <tr>
+                        <th scope="col">Skill</th>
+                        <th scope="col">Level</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">Cybersecurity</th>
+                        <td>Intermediate</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">HTML &amp; Web Coding</th>
+                        <td>Beginner</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Radio Programming</th>
+                        <td>Advanced</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">PC Hardware</th>
+                        <td>Advanced</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -196,7 +281,7 @@ Repository URL: (paste your GitHub repo URL here)
         </div>
       </section>
 
-      <!-- CONTACT -->
+      <!-- CONTACT (Bootstrap activity: modal + toast on submit) -->
       <section id="contact" class="panel">
         <h2 class="panel-title">Contact</h2>
 
@@ -209,7 +294,7 @@ Repository URL: (paste your GitHub repo URL here)
         </p>
 
         <p>
-          <a class="btn btn-ghost" href="Resume.pdf" download>
+          <a class="btn btn-outline-light" href="Resume.pdf" download>
             Download Resume (PDF)
           </a>
         </p>
@@ -218,31 +303,38 @@ Repository URL: (paste your GitHub repo URL here)
           <fieldset class="form-fieldset">
             <legend class="form-legend">Send a message</legend>
 
-            <label class="form-label" for="name">Name</label>
-            <input type="text" id="name" name="name" required />
+            <div class="mb-3">
+              <label class="form-label" for="name">Name</label>
+              <input class="form-control" type="text" id="name" name="name" required />
+            </div>
 
-            <label class="form-label" for="email">Email</label>
-            <input type="email" id="email" name="email" required />
+            <div class="mb-3">
+              <label class="form-label" for="email">Email</label>
+              <input class="form-control" type="email" id="email" name="email" required />
+            </div>
 
-            <label class="form-label" for="topic">Topic</label>
-            <select id="topic" name="topic" required>
-              <option value="">Choose one</option>
-              <option value="school">School</option>
-              <option value="project">Project</option>
-              <option value="other">Other</option>
-            </select>
+            <div class="mb-3">
+              <label class="form-label" for="topic">Topic</label>
+              <select class="form-select" id="topic" name="topic" required>
+                <option value="">Choose one</option>
+                <option value="school">School</option>
+                <option value="project">Project</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
 
-            <label class="form-label" for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <div class="mb-3">
+              <label class="form-label" for="message">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+            </div>
 
-            <div class="form-actions">
-              <button class="btn" type="submit">Send</button>
-              <button class="btn btn-ghost" type="reset">Clear</button>
+            <div class="d-flex flex-wrap gap-3">
+              <button class="btn btn-light" type="submit">Send</button>
+              <button class="btn btn-outline-light" type="reset">Clear</button>
             </div>
           </fieldset>
         </form>
 
-        <!-- JS will write status text here -->
         <p id="form-status" class="form-status" aria-live="polite"></p>
       </section>
 
@@ -262,6 +354,7 @@ Repository URL: (paste your GitHub repo URL here)
           </li>
         </ul>
       </section>
+
     </main>
 
     <!-- ASIDE -->
@@ -279,12 +372,43 @@ Repository URL: (paste your GitHub repo URL here)
       <p>&copy; 2026 Cole Jason Fetterman</p>
       <p>
         Last updated:
-        <time datetime="2026-02-08">February 8, 2026</time>
+        <time datetime="2026-02-17">February 17, 2026</time>
         <span class="sep">|</span>
         <a href="#top">Back to top</a>
       </p>
     </footer>
 
   </div>
+
+  <!-- Bootstrap Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-light border border-opacity-25">
+        <div class="modal-header">
+          <h2 class="h5 modal-title" id="contactModalLabel">Message received</h2>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="contactModalBody">
+          Thanks! Your message was captured for this demo.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Toast -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100">
+    <div id="contactToast" class="toast text-bg-dark border border-opacity-25" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body" id="contactToastBody">Sent!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap 5 JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
