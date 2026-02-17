@@ -1,18 +1,18 @@
 /*
-Grey + Creative — FULL STYLESHEET (Proper sized font)
+Grey + Creative — FULL STYLESHEET (Bootstrap-safe)
 
 Name: Cole Jason Fetterman
 Student ID: 9 9246 2023
-Course: IST 256: Programming for the Web
-Assignment: ASG-L3: LIVE Portfolio Page + DOM Activities
-Submission Date: February 8, 2026
+Course: IST 256 – Programming for the Web
+Assignment: LIVE Portfolio Page + Bootstrap Activities
+Submission Date: February 17, 2026
 
 - Angled hero header + headline
 - Left rail navigation on desktop (sticky)
 - Panels have a “spine” timeline feel
 - Aside is sticky on desktop
-- Grey theme, all text light, minimal buttons
-- Includes: reset, design system, base, layout, header, nav, components, tables, forms, utilities, animations, responsive, reduced motion
+- Grey theme, all text light
+- Bootstrap-friendly: does NOT override Bootstrap .btn
 */
 
 /* =========================================================
@@ -40,42 +40,34 @@ img {
    2) Design System (CSS Custom Properties)
    ========================================================= */
 :root{
-  /* Greys */
   --bg-0: #0e0e10;
   --bg-1: #151518;
   --bg-2: #1f2024;
 
-  /* Text */
   --text: #f5f6f7;
   --muted: rgba(245, 246, 247, 0.78);
 
-  /* Accent */
   --accent: #c9cdd3;
 
-  /* Surfaces */
   --surface: rgba(255,255,255,0.05);
   --surface-2: rgba(255,255,255,0.03);
   --border: rgba(255,255,255,0.12);
   --border-soft: rgba(255,255,255,0.08);
 
-  /* Typography */
   --ff-base: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --ff-mono: "Fira Mono", "SFMono-Regular", Menlo, Consolas, monospace;
 
-  /* Proper sized type */
   --fs-xs: 0.88rem;
   --fs-sm: 0.96rem;
   --fs-md: 1.00rem;
   --fs-lg: 1.18rem;
   --fs-xl: 1.70rem;
-  --fs-2xl: 2.20rem;
   --fs-hero: clamp(2.0rem, 3.2vw, 3.0rem);
 
   --fw-regular: 400;
   --fw-medium: 650;
   --fw-bold: 800;
 
-  /* Spacing */
   --sp-1: 0.6rem;
   --sp-2: 0.9rem;
   --sp-3: 1.35rem;
@@ -83,26 +75,22 @@ img {
   --sp-5: 2.8rem;
   --sp-6: 3.8rem;
 
-  /* Radius */
-  --r-sm: 14px;
   --r-md: 22px;
   --r-lg: 32px;
   --r-round: 999px;
 
-  /* Shadows */
   --shadow-1: 0 18px 60px rgba(0,0,0,0.45);
   --shadow-2: 0 30px 120px rgba(0,0,0,0.55);
 
-  /* Motion */
   --t-fast: 140ms;
   --t-med: 240ms;
   --ease: cubic-bezier(.2,.8,.2,1);
 
-  /* Layout widths */
   --maxw: 1280px;
-
-  /* Z */
   --z-skip: 50;
+
+  /* FIX: anchor offset so sections aren't hidden under sticky nav */
+  --scroll-offset: 90px;
 }
 
 /* =========================================================
@@ -125,20 +113,10 @@ h1, h2, h3{
   margin: 0 0 var(--sp-2);
   letter-spacing: -0.02em;
 }
-
 h2{ font-size: var(--fs-xl); font-weight: var(--fw-bold); }
 h3{ font-size: var(--fs-lg); font-weight: var(--fw-medium); }
 
 p{ margin: 0 0 var(--sp-3); font-size: var(--fs-md); }
-
-code{
-  font-family: var(--ff-mono);
-  font-size: 0.95em;
-  padding: 0.18em 0.42em;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.40);
-  border: 1px solid rgba(255,255,255,0.10);
-}
 
 a{
   color: var(--text);
@@ -149,12 +127,10 @@ a{
     transform var(--t-fast) var(--ease),
     text-decoration-color var(--t-fast) var(--ease);
 }
-
 a:hover{
   opacity: 0.95;
   text-decoration-color: rgba(255,255,255,0.78);
 }
-
 a:active{ transform: translateY(1px); }
 
 a:focus-visible,
@@ -166,7 +142,6 @@ textarea:focus-visible{
   outline-offset: 3px;
 }
 
-/* External link marker */
 a[target="_blank"]::after{
   content: " ↗";
   font-size: 0.9em;
@@ -199,7 +174,6 @@ a[target="_blank"]::after{
 .site-aside{ grid-area: aside; }
 .site-footer{ grid-area: footer; }
 
-/* Skip link */
 .skip-link{
   position: absolute;
   left: -999px;
@@ -211,6 +185,11 @@ a[target="_blank"]::after{
   border: 1px solid var(--border);
 }
 .skip-link:focus{ left: 12px; }
+
+/* FIX: anchor links not hidden under sticky navbar */
+.site-main .panel[id]{
+  scroll-margin-top: var(--scroll-offset);
+}
 
 /* =========================================================
    5) Header (Angled Hero)
@@ -226,7 +205,6 @@ a[target="_blank"]::after{
     radial-gradient(900px 500px at 20% 20%, rgba(255,255,255,0.08), transparent 60%),
     linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
 }
-
 .site-header::after{
   content:"";
   position:absolute;
@@ -234,7 +212,6 @@ a[target="_blank"]::after{
   background: linear-gradient(135deg, transparent 0 62%, rgba(0,0,0,0.22) 62% 100%);
   pointer-events:none;
 }
-
 .site-header::before{
   content:"";
   position:absolute;
@@ -266,11 +243,9 @@ a[target="_blank"]::after{
   opacity: 0.98;
 }
 
-/* Rounded-square profile image */
 .profile-photo{
   width: min(320px, 100%);
   aspect-ratio: 1 / 1;
-  height: auto;
   border-radius: var(--r-lg);
   object-fit: cover;
 
@@ -282,7 +257,7 @@ a[target="_blank"]::after{
 }
 
 /* =========================================================
-   6) Navigation (Underline + Rail on desktop)
+   6) Navbar (Bootstrap-friendly tweaks)
    ========================================================= */
 .site-nav{
   background: transparent;
@@ -290,46 +265,26 @@ a[target="_blank"]::after{
   box-shadow: none;
 }
 
-.nav-list{
-  list-style:none;
-  margin:0;
-  padding:0;
-
-  display:flex;
-  flex-wrap:wrap;
-  gap: var(--sp-3);
+/* FIX: nav link readability */
+.site-nav .nav-link{
+  color: rgba(245, 246, 247, 0.88);
+}
+.site-nav .nav-link:hover,
+.site-nav .nav-link:focus-visible{
+  color: var(--text);
+}
+.site-nav .navbar-brand{
+  color: var(--text);
 }
 
-.nav-link{
-  display:inline-block;
-  padding: 0.25rem 0;
-  text-decoration:none;
-  opacity: 0.92;
-  position:relative;
-  transition: opacity var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+/* Active nav link state (JS toggles this) */
+.nav-link.is-active{
+  opacity: 1;
+  text-decoration-color: rgba(255,255,255,0.85);
 }
-
-.nav-link::after{
-  content:"";
-  position:absolute;
-  left:0;
-  bottom:-0.45rem;
-  width:100%;
-  height:1px;
-  background: rgba(255,255,255,0.65);
-  transform: scaleX(0);
-  transform-origin:left;
-  transition: transform var(--t-med) var(--ease);
-}
-
-.nav-link:hover{
-  opacity:1;
-  transform: translateY(-1px);
-}
-.nav-link:hover::after{ transform: scaleX(1); }
 
 /* =========================================================
-   7) Panels / Cards / Components
+   7) Panels / Components
    ========================================================= */
 .panel{
   position: relative;
@@ -343,7 +298,6 @@ a[target="_blank"]::after{
   animation: popIn 280ms var(--ease) both;
 }
 
-/* Timeline spine */
 .panel::before{
   content:"";
   position:absolute;
@@ -356,17 +310,7 @@ a[target="_blank"]::after{
   opacity: 0.9;
 }
 
-/* Divider between panels */
 .panel + .panel{ margin-top: var(--sp-5); }
-.panel + .panel::after{
-  content:"";
-  position:absolute;
-  left: 0;
-  right: 0;
-  top: calc(-1 * (var(--sp-5) / 2));
-  height: 1px;
-  background: rgba(255,255,255,0.08);
-}
 
 .panel-title::after{
   content:"";
@@ -378,7 +322,7 @@ a[target="_blank"]::after{
   opacity: 0.95;
 }
 
-/* Facts list */
+/* Facts */
 .facts{
   display:grid;
   grid-template-columns: 1fr;
@@ -426,7 +370,6 @@ a[target="_blank"]::after{
   gap: var(--sp-4);
   margin-bottom: var(--sp-4);
 }
-
 .card{
   border-radius: var(--r-md);
   border: 1px solid rgba(255,255,255,0.12);
@@ -440,35 +383,16 @@ a[target="_blank"]::after{
   border-color: rgba(255,255,255,0.20);
 }
 
-/* Buttons (flat + minimal) */
-.btn{
-  display:inline-block;
-  padding: 0.35rem 0.1rem;
-  border:none;
-  background:transparent;
+/* FIX: Project card readability */
+.cards .card,
+.cards .card h3,
+.cards .card p,
+.cards .card li{
   color: var(--text);
-  cursor:pointer;
-  font-weight: var(--fw-medium);
-
-  text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.40);
-  text-underline-offset: 7px;
-
-  transition:
-    opacity var(--t-fast) var(--ease),
-    transform var(--t-fast) var(--ease),
-    text-decoration-color var(--t-fast) var(--ease);
 }
-.btn:hover{
-  opacity: 0.96;
-  transform: translateY(-1px);
-  text-decoration-color: rgba(255,255,255,0.80);
+.cards .card p{
+  color: rgba(245, 246, 247, 0.88);
 }
-.btn:active{ transform: translateY(1px); }
-.btn-ghost{ text-decoration-color: rgba(255,255,255,0.30); }
-
-/* Lists */
-.link-list > li{ margin-bottom: var(--sp-2); }
 
 /* =========================================================
    8) Tables
@@ -505,7 +429,7 @@ a[target="_blank"]::after{
 .data-table td{ color: var(--muted); }
 
 /* =========================================================
-   9) Forms
+   9) Forms (Bootstrap controls themed darker)
    ========================================================= */
 .contact-form{ margin-top: var(--sp-3); }
 
@@ -523,43 +447,40 @@ a[target="_blank"]::after{
 
 .form-label{
   display:block;
-  margin-top: var(--sp-3);
   margin-bottom: var(--sp-1);
   font-weight: var(--fw-medium);
 }
 
-input[type="text"],
-input[type="email"],
-select,
-textarea{
-  width: min(760px, 100%);
-  padding: 0.95rem 1.1rem;
-  border-radius: var(--r-md);
-  border: 1px solid rgba(255,255,255,0.16);
-  background: rgba(0,0,0,0.28);
+.form-status{
+  margin-top: var(--sp-3);
+  color: var(--muted);
+}
+
+/* Theme Bootstrap form controls */
+.form-control,
+.form-select{
+  background-color: rgba(0,0,0,0.28) !important;
+  color: var(--text) !important;
+  border-color: rgba(255,255,255,0.16) !important;
+}
+.form-control::placeholder{ color: rgba(255,255,255,0.55) !important; }
+.form-control:focus,
+.form-select:focus{
+  box-shadow: none !important;
+  border-color: rgba(255,255,255,0.36) !important;
+}
+
+/* Accordion visuals */
+.accordion-button{
+  border: none !important;
+  box-shadow: none !important;
+}
+.accordion-button::after{
+  filter: invert(1);
+  opacity: 0.85;
+}
+.accordion-body{
   color: var(--text);
-  transition: border-color var(--t-fast) var(--ease), background var(--t-fast) var(--ease);
-}
-
-textarea{ resize: vertical; }
-::placeholder{ color: rgba(255,255,255,0.55); }
-
-input:hover,
-select:hover,
-textarea:hover{ border-color: rgba(255,255,255,0.24); }
-
-input:focus,
-select:focus,
-textarea:focus{
-  border-color: rgba(255,255,255,0.36);
-  background: rgba(0,0,0,0.32);
-}
-
-.form-actions{
-  display:flex;
-  gap: var(--sp-3);
-  flex-wrap: wrap;
-  margin-top: var(--sp-4);
 }
 
 /* =========================================================
@@ -617,6 +538,8 @@ textarea:focus{
 }
 
 @media (min-width: 1024px){
+  :root{ --scroll-offset: 110px; }
+
   .site{
     grid-template-columns: 240px 1fr 320px;
     grid-template-areas:
@@ -631,39 +554,6 @@ textarea:focus{
     position: sticky;
     top: var(--sp-4);
     align-self: start;
-  }
-
-  .nav-list{
-    flex-direction: column;
-    gap: var(--sp-2);
-    padding: var(--sp-2);
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: var(--r-lg);
-    background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: var(--shadow-1);
-  }
-
-  .nav-link{
-    padding: 0.55rem 0.65rem;
-    border-radius: var(--r-md);
-    opacity: 0.92;
-  }
-
-  .nav-link::after{
-    bottom: auto;
-    top: 50%;
-    left: -10px;
-    width: 3px;
-    height: 70%;
-    transform: translateY(-50%) scaleY(0);
-    transform-origin: top;
-    background: rgba(255,255,255,0.55);
-  }
-
-  .nav-link:hover::after{
-    transform: translateY(-50%) scaleY(1);
   }
 
   .site-aside{
@@ -689,49 +579,14 @@ textarea:focus{
   }
 }
 
-/* =========================================================
-   ASG-L3 DOM Additions (does NOT break your original design)
-   ========================================================= */
-
-/* Make the section title feel clickable (we won't require adding buttons in HTML) */
-.panel-title{
-  cursor: pointer;
-}
-
-/* Collapsed state (JS toggles this class on the section) */
-.panel.is-collapsed > :not(.panel-title){
-  display: none;
-}
-
-/* Small caret indicator added via CSS on the title */
-.panel-title::before{
-  content: "▾ ";
-  opacity: 0.85;
-}
-.panel.is-collapsed .panel-title::before{
-  content: "▸ ";
-}
-
-/* Active nav link state */
-.nav-link.is-active{
-  opacity: 1;
-  text-decoration-color: rgba(255,255,255,0.85);
-}
-
-/* Form status message (JS creates it if not in HTML) */
-.form-status{
-  margin-top: var(--sp-3);
-  color: var(--muted);
-}
-
-/* Back-to-top button (JS creates it if not in HTML) */
+/* Back-to-top button (JS will create if missing) */
 .back-to-top{
   position: fixed;
   right: 18px;
   bottom: 18px;
   z-index: 60;
 
-  display: none; /* shown by JS */
+  display: none;
   padding: 0.65rem 0.95rem;
   border-radius: var(--r-round);
   border: 1px solid rgba(255,255,255,0.14);
