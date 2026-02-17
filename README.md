@@ -11,6 +11,17 @@ GitHub Pages
 # Update's for the Website
 ## 📝 Update Log
 
+## February 17, 2026 — Bootstrap Integration & UI Enhancement (ASG-L4)
+- Integrated Bootstrap 5 framework into the existing portfolio
+- Replaced horizontal navigation with a vertical stacked navigation layout (responsive and collapsible on mobile)
+- Converted About and Skills sections into interactive Bootstrap accordion components
+- Styled the contact form using Bootstrap form controls for improved consistency and responsiveness
+- Added a Bootstrap modal that displays confirmation upon form submission
+- Implemented a Bootstrap toast notification for dynamic feedback on message submission
+- Adjusted scroll behavior using scroll-margin-top to prevent section content from being hidden behind the sticky navigation
+- Improved project card readability by refining text color contrast
+- Maintained existing DOM interactivity while integrating Bootstrap components without conflicts
+
 ### February 8, 2026 — DOM Interactivity & UX Enhancements (ASG-L3)
 - Added JavaScript-powered DOM interactivity to the portfolio
 - Sections (About, Skills, Projects, Contact, Extras) can now be collapsed and expanded by clicking their headings
