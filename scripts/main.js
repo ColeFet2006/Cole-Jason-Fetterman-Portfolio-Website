@@ -2,53 +2,36 @@
 Name: Cole Jason Fetterman
 Student ID: 9 9246 2023
 Course: IST 256 – Programming for the Web
-Assignment: ASG-L3: LIVE Portfolio Page + DOM Activities
-Submission Date: February 8, 2026
-Repository URL: (paste your repo URL here)
+Assignment: LIVE Portfolio Page + Bootstrap Activities
+Submission Date: February 17, 2026
+Repository URL: (paste your GitHub repo URL here)
 */
 
 (() => {
   "use strict";
 
-  // 1) Collapsible panels (click the existing H2 title)
-  const panels = document.querySelectorAll("section.panel");
-  panels.forEach((panel) => {
-    const title = panel.querySelector(".panel-title");
-    if (!title) return;
-
-    // accessibility: let title act like a button
-    title.setAttribute("role", "button");
-    title.setAttribute("tabindex", "0");
-    title.setAttribute("aria-expanded", "true");
-
-    const toggle = () => {
-      const isCollapsed = panel.classList.toggle("is-collapsed");
-      title.setAttribute("aria-expanded", String(!isCollapsed));
-    };
-
-    title.addEventListener("click", toggle);
-    title.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        toggle();
-      }
-    });
-  });
-
-  // 2) Smooth scroll nav (keeps your CSS smooth behavior, but counts as DOM interaction too)
+  // 1) Smooth scroll nav + close Bootstrap nav on mobile
   const navLinks = document.querySelectorAll(".site-nav .nav-link[href^='#']");
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       const hash = link.getAttribute("href");
       const target = hash ? document.querySelector(hash) : null;
       if (!target) return;
+
       e.preventDefault();
       target.scrollIntoView({ behavior: "smooth", block: "start" });
       history.pushState(null, "", hash);
+
+      // If the Bootstrap navbar is open on mobile, close it after selecting a link
+      const collapseEl = document.getElementById("primaryNav");
+      if (collapseEl && window.bootstrap) {
+        const inst = bootstrap.Collapse.getInstance(collapseEl);
+        if (inst) inst.hide();
+      }
     });
   });
 
-  // 3) Active nav highlight on scroll
+  // 2) Active nav highlight on scroll
   const linkMap = new Map();
   navLinks.forEach((l) => linkMap.set(l.getAttribute("href"), l));
 
@@ -70,29 +53,48 @@ Repository URL: (paste your repo URL here)
       { threshold: [0.25, 0.4, 0.55] }
     );
     sections.forEach((sec) => obs.observe(sec));
+  } else {
+    setActive("#about");
   }
 
-  // 4) Contact form feedback (no refresh)
+  // 3) Contact form feedback + Bootstrap Modal + Toast (Bootstrap activity)
   const form = document.querySelector("form.contact-form");
-  if (form) {
-    let status = document.getElementById("form-status");
-    if (!status) {
-      status = document.createElement("p");
-      status.id = "form-status";
-      status.className = "form-status";
-      status.setAttribute("aria-live", "polite");
-      form.insertAdjacentElement("afterend", status);
-    }
+  const status = document.getElementById("form-status");
 
+  if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
+
       const name = document.getElementById("name")?.value?.trim() || "there";
-      status.textContent = `Thanks, ${name}! Your message was captured for this demo (no email is sent).`;
+      const topic = document.getElementById("topic")?.value || "your message";
+
+      if (status) {
+        status.textContent = `Thanks, ${name}! Your message was captured for this demo (no email is sent).`;
+      }
+
+      // Modal
+      const modalEl = document.getElementById("contactModal");
+      const modalBody = document.getElementById("contactModalBody");
+      if (modalBody) {
+        modalBody.textContent = `Thanks, ${name}! I received: ${topic}. (Demo only — no email is sent.)`;
+      }
+      if (modalEl && window.bootstrap) {
+        bootstrap.Modal.getOrCreateInstance(modalEl).show();
+      }
+
+      // Toast
+      const toastEl = document.getElementById("contactToast");
+      const toastBody = document.getElementById("contactToastBody");
+      if (toastBody) toastBody.textContent = `Sent! Thanks, ${name}.`;
+      if (toastEl && window.bootstrap) {
+        bootstrap.Toast.getOrCreateInstance(toastEl, { delay: 3000 }).show();
+      }
+
       form.reset();
     });
   }
 
-  // 5) Back-to-top button (created automatically)
+  // 4) Back-to-top button (created automatically if missing)
   let backToTop = document.getElementById("back-to-top");
   if (!backToTop) {
     backToTop = document.createElement("button");
